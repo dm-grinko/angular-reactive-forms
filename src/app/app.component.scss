@@ -1,0 +1,22 @@
+.my-form {
+    margin-top: 80px;
+
+    .my-form-title {
+        margin-bottom: 40px;
+    }
+
+    .my-form-error-message {
+        color: red;
+        margin-top: 5px;
+    }
+
+    button[disabled] {
+        $gray-color: #838383;
+        background-color: $gray-color;
+        border-color: $gray-color;
+    }
+    
+    pre {
+        margin-top: 40px;
+    }
+}

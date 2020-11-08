@@ -1,0 +1,57 @@
+<div class="container my-form">
+  <form [formGroup]="myForm">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="my-form-title">My Form</h1>
+      </div>
+    </div>
+
+    <div class="row" [ngClass]="{'error': myForm.controls['name'].errors && !myForm.controls['name'].pristine}">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="first">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" autocomplete="off">
+          <div *ngIf="myForm.controls['name'].errors && !myForm.controls['name'].pristine">
+            <div class="my-form-error-message" [hidden]="!myForm.controls['name'].errors.required && !myForm.controls['name'].errors.patternInvalid">
+              Name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" [ngClass]="{'error': myForm.controls['email'].errors && !myForm.controls['email'].pristine}">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" autocomplete="off">
+          <div *ngIf="myForm.controls['email'].errors && !myForm.controls['email'].pristine">
+
+            <div class="my-form-error-message" [hidden]="!myForm.controls['email'].errors.required">
+              Email is required.
+            </div>
+            <div class="my-form-error-message"
+              [hidden]="!myForm.controls['email'].errors.patternInvalid && !myForm.controls['email'].errors.verifyEmail">
+              Email is invalid.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="phone">Phone Number (optional)</label>
+          <input type="phone" class="form-control" id="phone" formControlName="phone" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <button type="button" class="btn btn-primary" (click)="onSubmit(myForm.value)" [disabled]="myForm.invalid">Submit</button>
+  </form>
+
+  <pre>{{myFormData | json}}</pre>
+
+</div>
